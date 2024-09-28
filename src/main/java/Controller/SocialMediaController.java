@@ -48,17 +48,24 @@ public class SocialMediaController {
         Account addedAccount = accountService.addAccount(account);
         if(addedAccount != null){
             context.json(mapper.writeValueAsString(addedAccount));
-            System.out.println("Hi from account added!");
         }
         else{
-            System.out.println("Never went through");
             context.status(400);
         }
         //context.json("sample text");
     }
 
-    private void postUserLoginHandler(Context context) {
-        context.json("sample text");
+    private void postUserLoginHandler(Context context) throws JsonProcessingException {
+        ObjectMapper mapper = new ObjectMapper();
+        Account account = mapper.readValue(context.body(), Account.class);
+        Account loginAccount = accountService.getAccount(account);
+        if(loginAccount != null){
+            context.json(mapper.writeValueAsString(loginAccount));
+        }
+        else{
+            context.status(401);
+        }
+        //context.json("sample text");
     }
 
     private void postNewMessageHandler(Context context) {
