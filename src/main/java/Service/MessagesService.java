@@ -36,6 +36,17 @@ public class MessagesService {
         return messagesDAO.getMessageById(id);
     }
 
+    public Message deleteMessageById(int id){
+        Message messCheck = new Message();
+        messCheck = messagesDAO.getMessageById(id);
+        if(messCheck != null)
+        {
+            messagesDAO.deleteMessageById(id);
+        }
+        return messCheck;
+            
+    }
+
 
     
 }

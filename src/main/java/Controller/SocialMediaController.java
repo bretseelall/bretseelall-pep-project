@@ -96,7 +96,10 @@ public class SocialMediaController {
     }
 
     private void deleteMessageByIdHandler(Context context) {
-        context.json("sample text");
+        Message message = messageService.deleteMessageById(Integer.parseInt(context.pathParam("message_id")));
+        if(message != null){
+            context.json(message);
+        }
     }
 
     private void patchMessageByIdHandler(Context context) {
