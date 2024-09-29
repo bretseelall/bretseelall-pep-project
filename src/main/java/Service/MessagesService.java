@@ -47,6 +47,20 @@ public class MessagesService {
             
     }
 
+    public Message updateMessage(int id, String newMessage){
+        Message message = new Message();
+        message = messagesDAO.getMessageById(id);
+        if((message != null) && (newMessage.length() <= 255) && (newMessage.isBlank() != true)){
+            messagesDAO.updateMessage(id, newMessage);
+            message = messagesDAO.getMessageById(id);
+            return message;
+        }
+        else{
+            return null;
+        }
+        
+    }
+
 
     
 }
