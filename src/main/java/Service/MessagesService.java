@@ -61,6 +61,10 @@ public class MessagesService {
         
     }
 
+    public List<Message> getAllMessagesFromUser(int userId){
+        return messagesDAO.getAllMessagesFromUser(userId);
+    }
+
 
     
 }
