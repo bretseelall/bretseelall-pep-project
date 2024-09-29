@@ -10,6 +10,8 @@ import Service.MessagesService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.util.*;
+
 /**
  * TODO: You will need to write your own endpoints and handlers for your controller. The endpoints you will need can be
  * found in readme.md as well as the test cases. You should
@@ -84,7 +86,8 @@ public class SocialMediaController {
     }
 
     private void getAllMessagesHandler(Context context) {
-        context.json("sample text");
+        List<Message> messages = messageService.getAllMessages();
+        context.json(messages);
     }
 
     private void getMessageByIdHandler(Context context) {
